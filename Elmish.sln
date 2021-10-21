@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ElmishApplication", "src\elmish\ElmishApplication.fsproj", "{638C68B6-874B-478A-B451-66E7E29C5F6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{638C68B6-874B-478A-B451-66E7E29C5F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638C68B6-874B-478A-B451-66E7E29C5F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638C68B6-874B-478A-B451-66E7E29C5F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638C68B6-874B-478A-B451-66E7E29C5F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
