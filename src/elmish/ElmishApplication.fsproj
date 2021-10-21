@@ -4,6 +4,7 @@
     <DefineConstants>FABLE_COMPILER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Todos.fs" />
     <Compile Include="App.fs" />
     <TypeScriptCompile Include="App.d.ts" />
   </ItemGroup>

@@ -13,3 +13,8 @@ Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.
 This branch adds the minimum amount of code to host Fable/Elmish inside the Angular application.
 
 Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.
+
+### RoutingWithRequests Branch
+
+This branch adds multiple Elmish pages and implements the functionality to
+allow Angular to request those pages based on the route.

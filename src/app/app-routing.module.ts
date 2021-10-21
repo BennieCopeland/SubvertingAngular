@@ -9,8 +9,24 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'elmish',
-    component: ElmishPageComponent
+    path: 'todos',
+    component: ElmishPageComponent,
+    data: { page: 'Todos'}
+  },
+  {
+    path: 'page-a',
+    component: ElmishPageComponent,
+    data: { page: 'PageA'}
+  },
+  {
+    path: 'page-b',
+    component: ElmishPageComponent,
+    data: { page: 'PageB'}
+  },
+  {
+    path: 'bad-page',
+    component: ElmishPageComponent,
+    data: { page: 'BadPage'}
   },
   {
     path: '',
