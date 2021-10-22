@@ -27,3 +27,11 @@ This branch rolls back the changes of the RoutingWithRequests branch to
 replace it with Feliz.Router.
 
 Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.
+
+### RoutingWithCustomFeliz Branch
+
+This branch replaces Feliz.Router in the RoutingWithFeliz branch with a customized version
+to allow the navigation code to be pluggable. This allows overriding the Feliz navigation
+code with the Angular router.
+
+Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.

@@ -3,7 +3,7 @@ module Todos
 open System
 open Elmish
 open Feliz
-open Feliz.Router
+open Feliz.CustomRouter
 
 [<RequireQualifiedAccess>]
 type Url =
@@ -82,11 +82,11 @@ let init url =
 let update msg state =
     match msg, state.CurrentPage with
     | AddClicked, Page.Todos _ ->
-        state, Cmd.navigatePath("todos", "add")
+        state, Cmd.navigate("todos", "add")
     | EditClicked todoId, Page.Todos _ ->
-        state, Cmd.navigatePath("todos", "edit", todoId.ToString())
+        state, Cmd.navigate("todos", "edit", todoId.ToString())
     | ViewClicked todoId, Page.Todos _ ->
-        state, Cmd.navigatePath("todos", "view", todoId.ToString())
+        state, Cmd.navigate("todos", "view", todoId.ToString())
     | DeleteClicked todoId, Page.Todos _ ->
         todoStore <- Map.remove todoId todoStore
 
@@ -104,15 +104,15 @@ let update msg state =
         let todo = { todo with Completed = completed }
         { state with CurrentPage = Edit (todoId, todo) }, Cmd.none
     | ReturnToList, Add _ | ReturnToList, Edit _ | ReturnToList, View _ ->
-        state, Cmd.navigatePath("todos")
+        state, Cmd.navigate("todos")
     | SaveClicked, Add todo ->
         todoStore <- Map.add (Guid.NewGuid()) todo todoStore
         
-        state, Cmd.navigatePath("todos")
+        state, Cmd.navigate("todos")
     | SaveClicked, Edit (todoId, todo) ->
         todoStore <- Map.add todoId todo todoStore
         
-        state, Cmd.navigatePath("todos")
+        state, Cmd.navigate("todos")
     | _, _ -> state, Cmd.none
 
 let viewTodo todo dispatch =

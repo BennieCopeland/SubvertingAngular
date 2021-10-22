@@ -5,7 +5,7 @@ open Elmish
 open Elmish.React
 open Fable.React
 open Feliz
-open Feliz.Router
+open Feliz.CustomRouter
 
 module PageA =
     type Model = unit
@@ -28,7 +28,8 @@ type Url =
     | PageB
     | NotFound
 
-let parseUrl = function
+let parseUrl (xs: string list) =
+    match xs with
     | "todos" :: segments -> Url.Todos (Todos.parseUrl segments)
     | [ "page-a" ] -> Url.PageA
     | [ "page-b" ] -> Url.PageB
@@ -105,8 +106,9 @@ let update msg state =
         // log a likely invalid transition
         state, Cmd.none
 
-let view model dispatch =
+let view navigator model dispatch =
     React.router [
+        router.navigator navigator
         router.pathMode
         router.onUrlChanged (parseUrl >> UrlChanged >> dispatch)
         router.children [
@@ -118,12 +120,19 @@ let view model dispatch =
         ]
     ]
 
-let appInit htmlId authToken =
+let appInit htmlId authToken (setRoute : string array -> bool -> unit) =
     let props: InitProps = {
         AuthToken = authToken
     }
 
-    Program.mkProgram init update view
+    let navigator (segments, mode) =
+        let skipLocationChange =
+            match mode with
+            | HistoryMode.ReplaceState -> true
+            | _ -> false
+        setRoute (Array.ofList segments) skipLocationChange
+
+    Program.mkProgram init update (view navigator)
     |> Program.withReactSynchronous htmlId
     |> Program.withConsoleTrace
     |> Program.runWith props
