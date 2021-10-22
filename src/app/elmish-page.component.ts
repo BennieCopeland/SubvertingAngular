@@ -3,13 +3,10 @@ import {
     Component,
     ElementRef,
     OnDestroy,
-    OnInit,
     ViewChild
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { v4 as uuid } from 'uuid';
 import { appInit, killApp } from '@elmish/App.fs';
-import { first } from 'rxjs/operators'
 
 @Component({
     selector: 'elmish-page',
@@ -19,20 +16,11 @@ import { first } from 'rxjs/operators'
         </div>`
 })
 export class ElmishPageComponent implements
-    OnInit, AfterViewInit, OnDestroy {
+    AfterViewInit, OnDestroy {
 
     @ViewChild("elmishApp") elmishApp!: ElementRef;
-    pageId: string = 'unknown'
 
-    constructor(private route: ActivatedRoute) { }
-
-    ngOnInit() {
-        this.route.data
-            .pipe(first())
-            .subscribe(data => {
-                this.pageId = data.page
-            })
-    }
+    constructor() { }
 
     ngAfterViewInit() {
         // a production app should grab this from an OIDC client
@@ -41,7 +29,7 @@ export class ElmishPageComponent implements
         let domNodeId = uuid();
 
         this.elmishApp.nativeElement.id = domNodeId;
-        appInit(domNodeId, authToken, this.pageId);
+        appInit(domNodeId, authToken);
     }
 
     ngOnDestroy() {

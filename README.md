@@ -18,3 +18,12 @@ Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.
 
 This branch adds multiple Elmish pages and implements the functionality to
 allow Angular to request those pages based on the route.
+
+Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.
+
+### RoutingWithFeliz Branch
+
+This branch rolls back the changes of the RoutingWithRequests branch to
+replace it with Feliz.Router.
+
+Run `npx ng serve` for a dev server and navigate to `http://localhost:4200/`.

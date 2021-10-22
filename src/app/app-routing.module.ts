@@ -11,22 +11,24 @@ const routes: Routes = [
   {
     path: 'todos',
     component: ElmishPageComponent,
-    data: { page: 'Todos'}
+    children: [
+      {
+        path: '**',
+        component: ElmishPageComponent
+      }
+    ]
   },
   {
     path: 'page-a',
-    component: ElmishPageComponent,
-    data: { page: 'PageA'}
+    component: ElmishPageComponent
   },
   {
     path: 'page-b',
-    component: ElmishPageComponent,
-    data: { page: 'PageB'}
+    component: ElmishPageComponent
   },
   {
     path: 'bad-page',
-    component: ElmishPageComponent,
-    data: { page: 'BadPage'}
+    component: ElmishPageComponent
   },
   {
     path: '',
